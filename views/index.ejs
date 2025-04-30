@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,5 +9,24 @@
     <h1>Guia perguntas!</h1>
     <hr>
     <h3>Lista de perguntas</h3>
+
+   
+
+    <p>Nome: <%= nome %></p>
+    <p>Linguagem favorita: <%= lang %></p>
+    <p>Empresa: <%= empresa %></p>
+    <p>Inscritos: <%= inscritos %></p>
+
+    <% if(msg) { %>
+        <h3>Isso é uma mensagem de erro.</h3>
+    <% } else { %>
+        <h3>Nenhum erro.</h3>
+    <% } %>
+
+    <% jogos.forEach((jogo, index)=>{  %>
+        <h3>Jogo <%= index + 1%>: <%=jogo.nome%></h3>
+        <h4>Personagem Favorito: <%=jogo.personagemFavorito%></h4>
+    <% }) %>
+
 </body>
 </html>

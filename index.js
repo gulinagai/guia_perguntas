@@ -3,13 +3,41 @@ const app = express()
 
 app.set('view engine', 'ejs')  // estou dizendo para o express usar o EJS como View Engine
 
-app.get('/', (req, res)=> {
-    res.render('index')     // ao invés de utilizar o res.send(), utiliza-se o res.render() e passa o arquivo dentro dos parênteses, não precisa especificar a extensão. É dessa forma que o express fará a renderização do arquivo .ejs
+app.get('/:nome/:lang', (req, res)=> {
+    let nome = req.params.nome
+    let lang = req.params.lang
+    let exibirMsg = true
+
+    let jogos = [
+        {
+            nome: 'League of Legends', 
+            personagemFavorito: 'Katarina'
+        },
+        {
+            nome: 'Grand Chase', 
+            personagemFavorito: 'Sieghart'
+        },
+        {
+            nome: 'Pokémon', 
+            personagemFavorito: 'Dark Lugia'
+        },
+        {
+            nome: 'Valorant', 
+            personagemFavorito: 'Jett'
+        }
+    ]
+    
+    res.render('index', {
+        nome: nome,
+        lang: lang,
+        empresa: 'GuliX',
+        inscritos: 8000,
+        msg: exibirMsg,
+        jogos: jogos
+    })     
 })
 
-app.get('/perfil', (req, res)=> {
-    res.render('principal/perfil')
-})
+
 
 app.listen(8080, ()=> {
     console.log('App rodando!')
